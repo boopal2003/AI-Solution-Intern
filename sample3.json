@@ -1,0 +1,28 @@
+{
+  "client_profile": {
+    "name": "Michael Brown",
+    "investment_goals": "Balanced growth",
+    "risk_tolerance": "Moderate"
+  },
+  "portfolio_data": {
+    "year_to_date_returns": 5.2,
+    "annualized_returns": 4.8,
+    "asset_allocation": {
+      "equities": 45,
+      "bonds": 35,
+      "cash": 20
+    },
+    "risk_metrics": {
+      "sharpe_ratio": 1.2,
+      "standard_deviation": 10.1
+    }
+  },
+  "benchmarks": {
+    "equities": {
+      "S&P 500": 9.5
+    },
+    "bonds": {
+      "Bloomberg US Aggregate Bond Index": 2.8
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+    "client_profile": {
+        "name": "John Doe",
+        "investment_goals": "Long-term growth",
+        "risk_tolerance": "Moderate"
+    },
+    "portfolio_data": {
+        "year_to_date_returns": 8.5,
+        "annualized_returns": 7.2,
+        "asset_allocation": {
+            "equities": 60,
+            "bonds": 30,
+            "cash": 10
+        },
+        "risk_metrics": {
+            "sharpe_ratio": 1.5,
+            "standard_deviation": 12.3
+        }
+    },
+    "benchmarks": {
+        "equities": {
+            "S&P 500": 9.0
+        },
+        "bonds": {
+            "Bloomberg US Aggregate Bond Index": 2.5
+        }
+    }
+}
