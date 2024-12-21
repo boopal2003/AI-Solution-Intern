@@ -1,9 +1,10 @@
 # AI Solution Intern Case Study
 
 ## **Overview**
-This project is a case study aimed at automating investment report generation for a mid-sized asset management firm using Generative AI. The solution focuses on creating tailored, compliant, and insightful reports based on portfolio performance data and client-specific requirements.
+An automated investment report generation system that leverages Generative AI to create detailed, personalized portfolio analysis reports. The system processes client investment data and produces comprehensive reports with performance metrics, risk analysis, and tailored recommendations.
 
 ## **Key Objectives**
+- AI-Powered Report Generation: Uses the facebook/opt-350m model for intelligent report generation
 - Automate investment report generation with comprehensive portfolio performance analysis.
 - Tailor reports to align with diverse client profiles.
 - Ensure compliance with financial reporting standards by including necessary disclosures.
@@ -13,24 +14,23 @@ This project is a case study aimed at automating investment report generation fo
 ## **Features**
 
 ### **1. Automated Investment Report Generation**
-- Generates customized investment summaries using portfolio data such as:
-  - Year-to-Date (YTD) Returns
-  - Asset Allocation (Equities, Bonds, Cash)
-  - Risk Metrics (Sharpe Ratio, Standard Deviation)
-- Compares portfolio performance against benchmarks like:
-  - S&P 500
-  - Bloomberg US Aggregate Bond Index
+ AI-Powered Report Generation
+  - Automated report creation using Facebook's OPT-350M model
+  - Personalized portfolio analysis and recommendations
+  - Benchmark comparison against S&P 500
+
 
 ### **2. Tailored Content**
-- Customizes reports based on client profiles, including:
+Customizes reports based on client profiles, including:
   - Investment Goals (e.g., Long-term growth, Capital Preservation)
   - Risk Tolerance (e.g., Moderate, Low, High)
+  - Smart recommendations based on portfolio data
 
 ### **3. Compliance Assurance**
-- Includes mandatory disclaimers such as:
+Includes mandatory disclaimers such as:
   - "Past performance is not indicative of future results."
   - "This report is for informational purposes only."
-- Adheres to financial reporting standards.
+  - Adheres to financial reporting standards.
 
 ---
 
@@ -38,180 +38,127 @@ This project is a case study aimed at automating investment report generation fo
 ### **Prompt**
 The following prompt structure is designed to generate comprehensive investment report summaries:
 ```
-Input Data Structure:
-1. Client Profile:
-   - Name: [Client Name]
-   - Investment Goals: [Investment Objectives]
-   - Risk Tolerance: [Risk Profile]
+Client Profile:
+Name: [client_name]
+Investment Goal: [goal]
+Risk Tolerance: [tolerance]
+Time Horizon: [horizon]
 
-2. Portfolio Performance Metrics:
-   - Year-to-Date Returns: [Value]
-   - Annualized Returns: [Value]
-   - Asset Allocation:
-     - Equities: [Percentage]
-     - Bonds: [Percentage]
-     - Cash: [Percentage]
-   - Risk Metrics:
-     - Sharpe Ratio: [Value]
-     - Standard Deviation: [Value]
+Portfolio Performance:
+Total Portfolio Value: [value]
+Year-to-Date Return: [ytd_return]
+Asset Allocation: [allocation_data]
+Risk Metrics: [risk_metrics]
+Benchmark Comparison: [benchmark_data]
 
-3. Benchmarks:
-   - Equities Benchmark: [Benchmark Name and Return Value]
-   - Bonds Benchmark: [Benchmark Name and Return Value]
-
-Required Output Format:
-- Header: Include the client’s name and report date.
-- Section 1: Portfolio Performance Summary.
-  - Compare portfolio metrics with benchmarks.
-  - Highlight alignment with the client’s goals and risk tolerance.
-- Section 2: Actionable Insights.
-  - Suggest portfolio adjustments to improve performance or manage risks.
-- Section 3: Compliance Disclosures.
-  - Standard financial disclaimers:
-    - "Past performance is not indicative of future results."
-    - "This report is for informational purposes only and does not constitute financial advice.
+Please provide a comprehensive investment summary that includes:
+1. Portfolio Performance Overview
+2. Asset Allocation Analysis
+3. Risk Assessment
+4. Benchmark Comparison
+5. Recommendations aligned with the client's goals and risk tolerance
 ```
 
 ### **Test Samples**
 Three distinct test samples have been developed to demonstrate different output scenarios. The data is structured in JSON format as follows:
 #### **Sample - 1**
-This sample will produce "Portfolio is currently underperforming the S&P 500 benchmark. Review individual holdings for optimization opportunities." as a output.
 ```json
 {
-    "client_profile": {
-        "name": "John Doe",
-        "investment_goals": "Long-term growth",
-        "risk_tolerance": "Moderate"
-    },
-    "portfolio_data": {
-        "year_to_date_returns": 8.5,
-        "annualized_returns": 7.2,
+  "clients": [
+    {
+      "client_id": "C001",
+      "profile": {
+        "name": "Pranav Raj",
+        "risk_tolerance": "moderate",
+        "investment_goal": "retirement",
+        "time_horizon": "long_term"
+      },
+      "portfolio_metrics": {
+        "total_value": 500000,
+        "ytd_return": 8.5,
         "asset_allocation": {
-            "equities": 60,
-            "bonds": 30,
-            "cash": 10
+          "stocks": 60,
+          "bonds": 30,
+          "cash": 5,
+          "alternatives": 5
         },
         "risk_metrics": {
-            "sharpe_ratio": 1.5,
-            "standard_deviation": 12.3
-        }
-    },
-    "benchmarks": {
-        "equities": {
-            "S&P 500": 9.0
+          "sharpe_ratio": 1.2,
+          "volatility": 12.5,
+          "max_drawdown": -15.3
         },
-        "bonds": {
-            "Bloomberg US Aggregate Bond Index": 2.5
+        "benchmark_comparison": {
+          "sp500_return": 9.2,
+          "relative_performance": -0.7
         }
+      },
+      "historical_performance": {
+        "last_3_years": [12.3, 8.7, 8.5],
+        "last_quarter": 2.1
+      }
     }
+  ]
 }
 ```
 #### **Sample - 2**
-this sample will produce "Consider reducing equity exposure to better align with your moderate risk tolerance." as an output
 ```
 {
-  "client_profile": {
-    "name": "Sarah Johnson",
-    "investment_goals": "Long-term growth",
-    "risk_tolerance": "Moderate"
-  },
-  "portfolio_data": {
-    "year_to_date_returns": 11.2,
-    "annualized_returns": 9.8,
-    "asset_allocation": {
-      "equities": 75,    
-      "bonds": 20,
-      "cash": 5
-    },
-    "risk_metrics": {
-      "sharpe_ratio": 1.4,
-      "standard_deviation": 14.5
+  "clients":[
+    {
+      "client_id": "C002",
+      "profile": {
+        "name": "keerthinathan",
+        "risk_tolerance": "aggressive",
+        "investment_goal": "wealth_growth",
+        "time_horizon": "medium_term"
+      },
+      "portfolio_metrics": {
+        "total_value": 750000,
+        "ytd_return": 12.8,
+        "asset_allocation": {
+          "stocks": 80,
+          "bonds": 10,
+          "cash": 5,
+          "alternatives": 5
+        },
+        "risk_metrics": {
+          "sharpe_ratio": 1.5,
+          "volatility": 18.2,
+          "max_drawdown": -22.1
+        },
+        "benchmark_comparison": {
+          "sp500_return": 9.2,
+          "relative_performance": 3.6
+        }
+      },
+      "historical_performance": {
+        "last_3_years": [15.6, 11.2, 12.8],
+        "last_quarter": 3.4
+      }
     }
-  },
-  "benchmarks": {
-    "equities": {
-      "S&P 500": 10.5
-    },
-    "bonds": {
-      "Bloomberg US Aggregate Bond Index": 3.0
-    }
-  }
+  ]
 }
 ```
-#### **Sample - 3**
-This sample will produce "High cash position may be dragging on returns. Consider deploying capital into investment opportunities" as an output.
-```
-{
-  "client_profile": {
-    "name": "Michael Brown",
-    "investment_goals": "Balanced growth",
-    "risk_tolerance": "Moderate"
-  },
-  "portfolio_data": {
-    "year_to_date_returns": 5.2,
-    "annualized_returns": 4.8,
-    "asset_allocation": {
-      "equities": 45,
-      "bonds": 35,
-      "cash": 20
-    },
-    "risk_metrics": {
-      "sharpe_ratio": 1.2,
-      "standard_deviation": 10.1
-    }
-  },
-  "benchmarks": {
-    "equities": {
-      "S&P 500": 9.5
-    },
-    "bonds": {
-      "Bloomberg US Aggregate Bond Index": 2.8
-    }
-  }
-}
-```
+
 ### **Outcomes**
 Below is a sample output generated by the report summary generator based on client investment data:
 
-![image](https://github.com/user-attachments/assets/dbf6b38d-49e2-4eb1-abf9-fadb01006835)
+![image](https://github.com/user-attachments/assets/e0f16fcc-1dde-467e-ae5a-704fb25c64cb)
+
 
 ---
 ## **Code Implementation**
-The project includes two different implementations of the investment report generator:
 
-### **1. Direct JSON Input Version**
-the first implementation accepts a JSON-formatted client data structure and generates an immediate report. This version is ideal for batch processing, API integration, or when working with existing client data systems. It can process multiple client portfolios efficiently and is suitable for integration with other financial systems.
-
-### **2. Interactive Input Version**
-The second implementation provides an interactive command-line interface where users can input client data step by step. This version guides users through the data entry process with clear prompts and validation, making it perfect for testing, demonstration purposes, or when manual data entry is needed. It's particularly useful for financial advisors who want to generate quick reports during client meetings.
-
-Both versions use the same core report generation logic and produce identical output formats, differing only in how they collect input data. Users can choose the implementation that best suits their needs based on their use case and integration requirements.
-
----
-
-## **Project Structure**
-
-### **Files and Directories**
-- **`code/`**: Contains the Python implementation.
-  - `case_study.ipynb`: Jupyter Notebook with the full implementation.
-- **`outputs/`**: Includes sample generated reports for test cases.
-- **`README.md`**: This file, providing an overview of the project.
-
-### **Implementation Highlights**
-- **Prompt Engineering**: Designed to ensure tailored and compliant outputs.
-- **Test Cases**: Three scenarios tested:
-  1. Moderate Risk Investor
-  2. Conservative Investor
-  3. Aggressive Investor
-- **Debugging**: Focused on input validation, prompt refinement, and output accuracy.
+The project is implemented in Python using the Transformers library and leverages Facebook's OPT-350M model for text generation. The core functionality is encapsulated in the LocalInvestmentReportGenerator class, which processes JSON-formatted client data to generate comprehensive investment reports. The implementation includes two main methods: generate_structured_report() for creating formatted investment summaries and generate_recommendations() for producing AI-powered portfolio suggestions. The code supports both CPU and GPU execution, handles error validation, and maintains a modular structure for easy extension. All functionality is demonstrated in a Jupyter notebook (case_study.ipynb) with sample data files for testing and validation.
 
 ---
 
 ## **Proposed Improvements**
-- **Automation**: Automate data ingestion from financial APIs.
-- **Real-Time Feedback**: Implement dynamic feedback loops to refine prompts.
-- **Compliance Framework**: Add automated checks for regulatory compliance.
-
+- Integration with additional AI models
+- Enhanced visualization capabilities
+- API endpoint implementation
+- Automated data validation
+- Real-time market data integration
 ---
 
 ## **Acknowledgments**
