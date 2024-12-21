@@ -1,0 +1,36 @@
+{
+  "clients":[
+    {
+      "client_id": "C002",
+      "profile": {
+        "name": "keerthinathan",
+        "risk_tolerance": "aggressive",
+        "investment_goal": "wealth_growth",
+        "time_horizon": "medium_term"
+      },
+      "portfolio_metrics": {
+        "total_value": 750000,
+        "ytd_return": 12.8,
+        "asset_allocation": {
+          "stocks": 80,
+          "bonds": 10,
+          "cash": 5,
+          "alternatives": 5
+        },
+        "risk_metrics": {
+          "sharpe_ratio": 1.5,
+          "volatility": 18.2,
+          "max_drawdown": -22.1
+        },
+        "benchmark_comparison": {
+          "sp500_return": 9.2,
+          "relative_performance": 3.6
+        }
+      },
+      "historical_performance": {
+        "last_3_years": [15.6, 11.2, 12.8],
+        "last_quarter": 3.4
+      }
+    }
+  ]
+}

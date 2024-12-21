@@ -1,0 +1,36 @@
+{
+  "clients": [
+    {
+      "client_id": "C001",
+      "profile": {
+        "name": "Pranav Raj",
+        "risk_tolerance": "moderate",
+        "investment_goal": "retirement",
+        "time_horizon": "long_term"
+      },
+      "portfolio_metrics": {
+        "total_value": 500000,
+        "ytd_return": 8.5,
+        "asset_allocation": {
+          "stocks": 60,
+          "bonds": 30,
+          "cash": 5,
+          "alternatives": 5
+        },
+        "risk_metrics": {
+          "sharpe_ratio": 1.2,
+          "volatility": 12.5,
+          "max_drawdown": -15.3
+        },
+        "benchmark_comparison": {
+          "sp500_return": 9.2,
+          "relative_performance": -0.7
+        }
+      },
+      "historical_performance": {
+        "last_3_years": [12.3, 8.7, 8.5],
+        "last_quarter": 2.1
+      }
+    }
+  ]
+}
